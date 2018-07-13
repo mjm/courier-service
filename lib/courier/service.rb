@@ -7,13 +7,13 @@ module Courier
     def self.load_environment_variables(
       adapter: GoogleStorageAdapter.new(ENV[BUCKET_KEY])
     )
-      new_env = ServiceEnvironment.new(env: ENV, adapter: adapter)
+      new_env = ServiceEnvironment.new(env: ENV.to_h, adapter: adapter)
       ENV.replace(new_env.environment)
     end
   end
 
   class ServiceEnvironment
-    def initialize(env: ENV, adapter:)
+    def initialize(env:, adapter:)
       @env = env
       @adapter = adapter
     end
