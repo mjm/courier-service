@@ -1,4 +1,5 @@
 require 'courier/service/version'
+require 'courier/middleware/jwt'
 require 'pathname'
 
 module Courier
@@ -35,7 +36,7 @@ module Courier
         CONFIG.instance_eval(&block)
 
         $LOAD_PATH.unshift(root / 'lib')
-        %i[models middlewares helpers workers].each do |dir|
+        %i[models middlewares helpers service workers].each do |dir|
           require_app dir
         end
       end
