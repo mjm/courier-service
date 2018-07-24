@@ -17,22 +17,22 @@ module Courier
         end
 
         @app.call(env)
-      rescue JWT::DecodeError
+      rescue ::JWT::DecodeError
         [401, { 'Content-Type' => 'text/plain' }, ['The authorization token provided was invalid.']]
-      rescue JWT::ExpiredSignature
+      rescue ::JWT::ExpiredSignature
         [403, { 'Content-Type' => 'text/plain' }, ['The authorization token has expired.']]
       end
 
       def print_token(payload)
         puts 'You can use the following token to log in:'
-        puts JWT.encode(payload, @secret, @algorithm)
+        puts ::JWT.encode(payload, @secret, @algorithm)
       end
 
       private
 
       def decode_token(auth, env)
         token = auth.slice(7..-1)
-        payload, = JWT.decode(token, @secret, true, algorithm: @algorithm)
+        payload, = ::JWT.decode(token, @secret, true, algorithm: @algorithm)
 
         env['jwt.payload'] = payload
         env['jwt.token'] = JWTToken.new(payload)
