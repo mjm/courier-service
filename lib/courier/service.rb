@@ -1,6 +1,8 @@
-require 'courier/service/version'
-require 'courier/middleware/jwt'
 require 'pathname'
+
+require 'courier/service/version'
+require 'courier/authorization'
+require 'courier/middleware/jwt'
 
 module Courier
   module Service

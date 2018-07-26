@@ -3,12 +3,17 @@ PATH
   specs:
     courier-service (0.1.0)
       jwt
+      twirp
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.3)
+    faraday (0.15.2)
+      multipart-post (>= 1.2, < 3)
+    google-protobuf (3.6.0-universal-darwin)
     jwt (2.1.0)
+    multipart-post (2.0.0)
     rack (2.0.5)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -26,6 +31,9 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    twirp (1.0.0)
+      faraday (~> 0)
+      google-protobuf (~> 3.0, >= 3.0.0)
 
 PLATFORMS
   ruby
