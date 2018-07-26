@@ -9,6 +9,9 @@ GEM
   specs:
     diff-lcs (1.3)
     jwt (2.1.0)
+    rack (2.0.5)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rake (10.5.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
@@ -30,6 +33,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   courier-service!
+  rack-test
   rake (~> 10.0)
   rspec (~> 3.0)
 

@@ -50,6 +50,10 @@ module Courier
         payload['sub']
       end
 
+      def user_id
+        payload['uid']
+      end
+
       def roles
         payload.fetch('roles', [])
       end
