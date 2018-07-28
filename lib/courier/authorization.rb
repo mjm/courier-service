@@ -38,7 +38,7 @@ module Courier
     end
 
     def forbidden_error
-      Twirp::Error.resource_exhausted 'You cannot perform this action'
+      Twirp::Error.permission_denied 'You cannot perform this action'
     end
   end
 end

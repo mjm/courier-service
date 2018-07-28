@@ -37,7 +37,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a_twirp_error :resource_exhausted
+          expect(result).to be_a_twirp_error :permission_denied
         end
       end
 
@@ -55,7 +55,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a_twirp_error :resource_exhausted
+          expect(result).to be_a_twirp_error :permission_denied
         end
       end
 
@@ -96,7 +96,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a_twirp_error :resource_exhausted
+          expect(result).to be_a_twirp_error :permission_denied
         end
       end
 
@@ -114,7 +114,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a_twirp_error :resource_exhausted
+          expect(result).to be_a_twirp_error :permission_denied
         end
       end
 
@@ -155,7 +155,7 @@ RSpec.describe Courier::Authorization do
       let(:env) { { token: Token.new('sub' => 'foo') } }
 
       it 'returns a forbidden response' do
-        expect(result).to be_a_twirp_error :resource_exhausted
+        expect(result).to be_a_twirp_error :permission_denied
       end
     end
 
