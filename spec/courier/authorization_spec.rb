@@ -148,4 +148,33 @@ RSpec.describe Courier::Authorization do
       end
     end
   end
+
+  describe '#require_service' do
+    let(:result) { require_service(env) { 'hello' } }
+
+    context 'when the environment does not have a token' do
+      it 'returns an unauthenticated error' do
+        expect(result).to be_a Twirp::Error
+        expect(result.code).to be :unauthenticated
+      end
+    end
+
+    context 'when the environment has a non-service token' do
+      let(:env) { { token: Token.new('sub' => 'foo') } }
+
+      it 'returns a forbidden response' do
+        expect(result).to be_a Twirp::Error
+        expect(result.code).to be :resource_exhausted
+      end
+    end
+
+    context 'when the environment has a token for a microservice' do
+      let(:token) { Token.new('sub' => 'courier-posts', 'roles' => ['service']) }
+      let(:env) { { token: token } }
+
+      it 'returns the value returned by the block' do
+        expect(result).to eq 'hello'
+      end
+    end
+  end
 end

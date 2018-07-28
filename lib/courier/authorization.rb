@@ -23,6 +23,14 @@ module Courier
       end
     end
 
+    def require_service(env)
+      require_token env do
+        return forbidden_error unless env[:token].role?('service')
+
+        yield
+      end
+    end
+
     private
 
     def unauthenticated_error
