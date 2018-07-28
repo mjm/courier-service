@@ -7,8 +7,10 @@ module Courier
       yield
     end
 
-    def require_user(env, id: nil, name: nil)
+    def require_user(env, id: nil, name: nil, allow_service: false)
       require_token env do
+        return yield if allow_service && env[:token].role?('service')
+
         if id
           return forbidden_error unless env[:token].user_id == id
         end
