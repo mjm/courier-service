@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "courier/service"
+require "courier/rspec"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

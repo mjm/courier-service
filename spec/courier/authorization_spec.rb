@@ -9,8 +9,7 @@ RSpec.describe Courier::Authorization do
 
     context 'when the environment does not have a token' do
       it 'returns an unauthenticated error' do
-        expect(result).to be_a Twirp::Error
-        expect(result.code).to be :unauthenticated
+        expect(result).to be_a_twirp_error :unauthenticated
       end
     end
 
@@ -29,8 +28,7 @@ RSpec.describe Courier::Authorization do
 
       context 'and the environment does not have a token' do
         it 'returns an unauthenticated error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :unauthenticated
+          expect(result).to be_a_twirp_error :unauthenticated
         end
       end
 
@@ -39,8 +37,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :resource_exhausted
+          expect(result).to be_a_twirp_error :resource_exhausted
         end
       end
 
@@ -58,8 +55,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :resource_exhausted
+          expect(result).to be_a_twirp_error :resource_exhausted
         end
       end
 
@@ -91,8 +87,7 @@ RSpec.describe Courier::Authorization do
 
       context 'and the environment does not have a token' do
         it 'returns an unauthenticated error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :unauthenticated
+          expect(result).to be_a_twirp_error :unauthenticated
         end
       end
 
@@ -101,8 +96,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :resource_exhausted
+          expect(result).to be_a_twirp_error :resource_exhausted
         end
       end
 
@@ -120,8 +114,7 @@ RSpec.describe Courier::Authorization do
         let(:env) { { token: token } }
 
         it 'returns a forbidden error' do
-          expect(result).to be_a Twirp::Error
-          expect(result.code).to be :resource_exhausted
+          expect(result).to be_a_twirp_error :resource_exhausted
         end
       end
 
@@ -154,8 +147,7 @@ RSpec.describe Courier::Authorization do
 
     context 'when the environment does not have a token' do
       it 'returns an unauthenticated error' do
-        expect(result).to be_a Twirp::Error
-        expect(result.code).to be :unauthenticated
+        expect(result).to be_a_twirp_error :unauthenticated
       end
     end
 
@@ -163,8 +155,7 @@ RSpec.describe Courier::Authorization do
       let(:env) { { token: Token.new('sub' => 'foo') } }
 
       it 'returns a forbidden response' do
-        expect(result).to be_a Twirp::Error
-        expect(result.code).to be :resource_exhausted
+        expect(result).to be_a_twirp_error :resource_exhausted
       end
     end
 
