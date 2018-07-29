@@ -2,6 +2,7 @@ require 'pathname'
 
 require 'courier/service/version'
 require 'courier/authorization'
+require 'courier/middleware/documentation'
 require 'courier/middleware/jwt'
 
 module Courier
