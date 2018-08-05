@@ -6,6 +6,7 @@ task :proto do
   if Dir.exist? 'client'
     dest = "client/lib/#{gem_dir}"
     mkdir_p dest
-    cp_r Dir['app/service/*.rb'], dest
+    cp Dir['app/service/*.proto'], dest
+    cp Dir['app/service/*.rb'], dest
   end
 end
